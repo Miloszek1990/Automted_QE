@@ -22,10 +22,10 @@ USPP="true"
 TITLE="E_psi"
 PREFIX="Si"
 
-rm $TITLE"_RESULTS_psi_phys.txt"
-rm $TITLE"_RESULTS_psi_comp.txt"
-RESULTS_1=$TITLE"_RESULTS_psi_phys.txt"
-RESULTS_2=$TITLE"_RESULTS_psi_comp.txt"
+rm $TITLE"_RESULTS_phys.txt"
+rm $TITLE"_RESULTS_comp.txt"
+RESULTS_1=$TITLE"_RESULTS_phys.txt"
+RESULTS_2=$TITLE"_RESULTS_comp.txt"
 
 # Put pseudo directory and output directory
 cd `echo $0 | sed 's/\(.*\)\/.*/\1/'` # extract pathname
