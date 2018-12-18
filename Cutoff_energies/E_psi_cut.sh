@@ -1,6 +1,6 @@
 #! /bin/bash
 
-#module add tryton/mpi/intel/2017
+#odule add tryton/mpi/intel/2017
 
 ### INPUT TEST PARAMETERS
 # Test range parameters
