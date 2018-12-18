@@ -37,7 +37,7 @@ def main(n_digits, idx_filt, comp_name, KS, filt, save_fig):
                              ])
     x_label      = r"Cutoff energy for wavefunction $E_\Psi$ [Ry]"
     
-    CE.plot_E(Tot_E_psi, Tot_E_dif, 
+    CE.plot_E(Tot_E_psi, Tot_E_dif, "E_psi",
               data_comp, filt_info[2], filt_info[1], filt_info[0],
               edge_idx, textstr, 0.95, x_label, save_fig)
 

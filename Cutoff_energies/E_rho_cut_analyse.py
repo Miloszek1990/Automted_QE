@@ -42,7 +42,7 @@ def main(n_digits, idx_filt, comp_name, PSI_v, PSI_m, KS, filt, save_fig):
                              ])
     x_label      = r"Cutoff energy for wavefunction $E_\rho$ [Ry]"
     
-    CE.plot_E(Tot_E_rho, Tot_E, 
+    CE.plot_E(Tot_E_rho, Tot_E, "E_rho",
               data_comp, filt_info[2], filt_info[1], filt_info[0],
               edge_idx, textstr, 0.85, x_label, save_fig)
     
@@ -57,7 +57,7 @@ PSI_multiplicity = 4       # PSI_v * PSI_m is energy, from which program stars t
 phys_name        = "Examples_out/E_rho_RESULTS_phys.txt"
 comp_name        = "Examples_out/E_rho_RESULTS_comp.txt"
 
-K                = 9       # Filtration kernel size
+K                = 5       # Filtration kernel size
 filt_method      = "median"# Filtration method - median, mean
 
 save_fig         = False    # Figure saving option

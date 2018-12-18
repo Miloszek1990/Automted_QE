@@ -129,7 +129,7 @@ def find_edge(Tot_E_diff, n_digits):
     
     return edge_idx
 
-def plot_E(Tot_E_psi, Tot_E_diff, 
+def plot_E(Tot_E, Tot_E_diff, name,
            data_comp, data_comp_filt, filt_method, kernel_size,
            edge_idx, text_str, y_text_pos, X_label, save_fig=False):
     
@@ -137,23 +137,23 @@ def plot_E(Tot_E_psi, Tot_E_diff,
     filt_len = len(data_comp_filt)
     norm_len = len(data_comp)
     len_diff = int((norm_len - filt_len)/2)
-    Tot_E_psi_filt = Tot_E_psi[len_diff:-(len_diff)]
+    Tot_E_filt = Tot_E[len_diff:-(len_diff)]
     
     fig, (ax1, ax2) = plt.subplots(2, 1,sharex=True)
     
-    ax1.plot(Tot_E_psi, Tot_E_diff)
-    ax1.axvline(Tot_E_psi[edge_idx], color="r")
+    ax1.plot(Tot_E, Tot_E_diff)
+    ax1.axvline(Tot_E[edge_idx], color="r")
     ax1.set_ylabel(r"$\delta E^{tot}$ [Ry]")
     ax1.text(0.66, y_text_pos, text_str, transform=ax1.transAxes, fontsize=10,
             verticalalignment='top', bbox=props)
     
-    ax2.plot(Tot_E_psi, data_comp, label="Main signal")
-    ax2.plot(Tot_E_psi_filt, data_comp_filt, label=filt_method.capitalize()+" filtration, K="+str(kernel_size))
+    ax2.plot(Tot_E, data_comp, label="Main signal")
+    ax2.plot(Tot_E_filt, data_comp_filt, label=filt_method.capitalize()+" filtration, K="+str(kernel_size))
     ax2.set_ylabel("Calculation time [s]")
     ax2.set_xlabel(X_label)
-    ax2.axvline(Tot_E_psi[edge_idx], color="r")
+    ax2.axvline(Tot_E[edge_idx], color="r")
     ax2.legend()
     fig.subplots_adjust(hspace=0)
     
     if save_fig==True:
-        plt.savefig('E_psi.png', bbox_inches='tight', format='png', dpi=300)
+        plt.savefig(name+".png", bbox_inches='tight', format='png', dpi=300)
