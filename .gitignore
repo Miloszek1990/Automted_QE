@@ -3,3 +3,6 @@
 
 # Ignore clean example input file
 # Si.pw-in
+
+# Ignore byte-compiled parts of Python 3.*
+Cutoff_energies/__pycache__/
