@@ -1,5 +1,5 @@
 # Ignore pseudopotential files
-pseudo/
+# pseudo/
 
 # Ignore clean example input file
-Si.pw-in
+# Si.pw-in
