@@ -4,12 +4,12 @@
 
 ### INPUT TEST PARAMETERS
 # Test range parameters
-cut_beg=1
-cut_end=800
+cut_beg=50
+cut_end=650
 step=1
 
 # Energy cutoff for charge density
-RHO=47
+PSI=47
 
 # Parallel computing parameters
 N_NODES=1
@@ -47,7 +47,7 @@ echo "Output files will be stored in:   "$OUTPUT_FILES_DIR
 
 ### PREPARE SET OF CUTOFF ENERGIES FOR WAVEFUNCTIONS
 let range=psi_cut_end-psi_cut_beg
-WAVE_CUT=$(seq $cut_beg $step $cut_end)	
+CUT=$(seq $cut_beg $step $cut_end)	
 echo $range" SCF calculations for yours system will be done."
 echo "Test starts at "$cut_beg" Ry and ends at "$cut_end" Ry, with "$step" Ry sampling."
 if [ "$USPP" = "true" ]
@@ -60,9 +60,9 @@ fi
 ### FIT THE INITIAL KINETIC ENERGY CUTOFF ENRGY TO THE E_psi
 if [ "$USPP" = "true" ]
 then
-	RHO=$RHO*12
+	RHO=$[$PSI*12]
 else
-	RHO=$RHO*4
+	RHO=$[$PSI*4]
 fi
 
 echo
@@ -71,7 +71,7 @@ echo "!!!CALCULATIONS STARTS!!!"
 echo
 echo
 
-for i in $WAVE_CUT; 
+for i in $CUT; 
 do
 
 ### MAKE TEMPORARY FILE NAME
@@ -95,8 +95,8 @@ cat > $TITLE_TMP".in" << EOF
     nat             = 2,
     ntyp            = 1,
     nbnd            = 30,
-    ecutwfc         = $i , 
-    ecutrho         = $RHO ,
+    ecutwfc         = $PSI , 
+    ecutrho         = $i ,
     input_dft       = "$FUNC" ,
     nosym           =.false.
     noinv           =.false.
