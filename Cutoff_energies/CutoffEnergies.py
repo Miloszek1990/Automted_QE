@@ -113,6 +113,13 @@ def roll_filt_signal(signal, method, KS):
     
     return roll_sig
 
+def find_nearest(signal, value):
+    
+    signal = np.asarray(signal)
+    idx = (np.abs(signal - value)).argmin()
+    
+    return int(signal[idx])
+
 def find_edge(Tot_E_diff, n_digits):
     
     edge_idx  = [] 
@@ -124,7 +131,7 @@ def find_edge(Tot_E_diff, n_digits):
 
 def plot_E(Tot_E_psi, Tot_E_diff, 
            data_comp, data_comp_filt, filt_method, kernel_size,
-           edge_idx, text_str, X_label, save_fig=False):
+           edge_idx, text_str, y_text_pos, X_label, save_fig=False):
     
     props    = dict(boxstyle='round', facecolor='white', alpha=0.5)
     filt_len = len(data_comp_filt)
@@ -137,7 +144,7 @@ def plot_E(Tot_E_psi, Tot_E_diff,
     ax1.plot(Tot_E_psi, Tot_E_diff)
     ax1.axvline(Tot_E_psi[edge_idx], color="r")
     ax1.set_ylabel(r"$\delta E^{tot}$ [Ry]")
-    ax1.text(0.66, 0.95, text_str, transform=ax1.transAxes, fontsize=10,
+    ax1.text(0.66, y_text_pos, text_str, transform=ax1.transAxes, fontsize=10,
             verticalalignment='top', bbox=props)
     
     ax2.plot(Tot_E_psi, data_comp, label="Main signal")
