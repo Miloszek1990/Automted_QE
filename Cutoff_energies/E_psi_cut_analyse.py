@@ -8,7 +8,7 @@ Created on Thu Dec 13 17:59:00 2018
 import numpy as np
 import CutoffEnergies as CE
 
-def main(n_digits, idx_filt, comp_name, KS, filt, save):
+def main(n_digits, idx_filt, comp_name, KS, filt, save_fig):
     
     # Read the data
     data_phys    = np.genfromtxt(phys_name)
@@ -39,7 +39,7 @@ def main(n_digits, idx_filt, comp_name, KS, filt, save):
     
     CE.plot_E(Tot_E_psi, Tot_E_dif, 
               data_comp, filt_info[2], filt_info[1], filt_info[0],
-              edge_idx, textstr, x_label, save)
+              edge_idx, textstr, x_label, save_fig=False)
 
 # Initial data
 n_digits         = 10**-4  # n-digits threshold - could be the number like e.g. 0.0012

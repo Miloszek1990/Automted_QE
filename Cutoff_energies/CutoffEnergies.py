@@ -34,22 +34,22 @@ def total_seconds(PWSCF_line):
         if used_replacements[i] == "d":
             PWSCF_line[i] = float(PWSCF_line[i])
             PWSCF_line[i] = 24*60*60*PWSCF_line[i]
-        if used_replacements[i] == "h":
+        elif used_replacements[i] == "h":
             PWSCF_line[i] = float(PWSCF_line[i])
             PWSCF_line[i] = 60*60*PWSCF_line[i]
-        if used_replacements[i] == "m":
+        elif used_replacements[i] == "m":
             PWSCF_line[i] = float(PWSCF_line[i])
             PWSCF_line[i] = 60*PWSCF_line[i]
-        if used_replacements[i] == "s":
+        elif used_replacements[i] == "s":
             PWSCF_line_tmp = PWSCF_line[i].split(".")
-            minutes = float(PWSCF_line_tmp[0])*60
+            s_1 = float(PWSCF_line_tmp[0])
             try:
-                seconds = float(PWSCF_line_tmp[1])
+                s_2 = float(PWSCF_line_tmp[1])/100
             except IndexError:
-                seconds = 0
-            PWSCF_line[i]  = minutes + seconds
-    
-    return int(sum(PWSCF_line))
+                s_2 = 0
+            PWSCF_line[i]  = s_1 + s_2
+
+    return sum(PWSCF_line)
 
 def read_file(file_name):
     
@@ -124,7 +124,7 @@ def find_edge(Tot_E_diff, n_digits):
 
 def plot_E(Tot_E_psi, Tot_E_diff, 
            data_comp, data_comp_filt, filt_method, kernel_size,
-           edge_idx, text_str, X_label, save=False):
+           edge_idx, text_str, X_label, save_fig=False):
     
     props    = dict(boxstyle='round', facecolor='white', alpha=0.5)
     filt_len = len(data_comp_filt)
@@ -148,5 +148,5 @@ def plot_E(Tot_E_psi, Tot_E_diff,
     ax2.legend()
     fig.subplots_adjust(hspace=0)
     
-    if save==True:
+    if save_fig==True:
         plt.savefig('E_psi.png', bbox_inches='tight', format='png', dpi=300)
