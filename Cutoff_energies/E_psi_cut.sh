@@ -43,8 +43,8 @@ echo "Output directory is:              "$OUTPUT_DIR
 echo "Output files will be stored in:   "$OUTPUT_FILES_DIR
 
 ### PREPARE SET OF CUTOFF ENERGIES FOR WAVEFUNCTIONS
-let range=psi_cut_end-psi_cut_beg
-WAVE_CUT=$(seq $cut_beg $step $cut_end)	
+let range=cut_end-cut_beg
+CUT=$(seq $cut_beg $step $cut_end)	
 echo $range" SCF calculations for yours system will be done."
 echo "Test starts at "$cut_beg" Ry and ends at "$cut_end" Ry, with "$step" Ry sampling."
 if [ "$USPP" = "true" ]
@@ -60,7 +60,7 @@ echo "!!!CALCULATIONS STARTS!!!"
 echo
 echo
 
-for i in $WAVE_CUT; 
+for i in $CUT; 
 do
 
 ### MAKE TEMPORARY FILE NAME
