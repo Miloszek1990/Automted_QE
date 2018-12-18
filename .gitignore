@@ -1,3 +1,5 @@
+# Ignore pseudopotential files
 pseudo/
-READEME.md
+
+# Ignore clean example input file
 Si.pw-in
