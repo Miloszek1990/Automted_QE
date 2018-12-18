@@ -35,8 +35,13 @@ def main(n_digits, idx_filt, comp_name, save_fig):
 # Initial data
 n_digits  = 10**-4  # n-digits threshold - could be the number like e.g. 0.0012
 idx_filt  = 3       # n'th index for which energy diff is lower than n_digits
+<<<<<<< HEAD
 phys_name = "E_psi_RESULTS_psi_phys.txt"
 comp_name = "E_psi_RESULTS_psi_comp.txt"
+=======
+phys_name = "E_psi_RESULTS_1_phys.txt"
+comp_name = "E_psi_RESULTS_2_comp.txt"
+>>>>>>> 494744e332e67dd599dd23e807d6fc2005381bf7
 save_fig  = False   # Figure saving option
 
 if __name__=="__main__":
