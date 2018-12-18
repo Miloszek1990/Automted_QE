@@ -11,7 +11,7 @@ import CutoffEnergies as CE
 def main(n_digits, idx_filt, comp_name, save_fig):
     
     # Read the data
-    data_phys = np.genfromtxt("E_psi_RESULTS_1_phys.txt")
+    data_phys = np.genfromtxt(phys_name)
     data_comp = CE.read_file(comp_name)
     data_comp = np.array([CE.total_seconds(line) for line in data_comp])
     
@@ -35,7 +35,8 @@ def main(n_digits, idx_filt, comp_name, save_fig):
 # Initial data
 n_digits  = 10**-4  # n-digits threshold - could be the number like e.g. 0.0012
 idx_filt  = 3       # n'th index for which energy diff is lower than n_digits
-comp_name = "E_psi_RESULTS_2_comp.txt"
+phys_name = "E_psi_RESULTS_psi_phys.txt"
+comp_name = "E_psi_RESULTS_psi_comp.txt"
 save_fig  = False   # Figure saving option
 
 if __name__=="__main__":

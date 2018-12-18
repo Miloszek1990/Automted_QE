@@ -4,9 +4,12 @@
 
 ### INPUT TEST PARAMETERS
 # Test range parameters
-cut_beg=15
-cut_end=100
+cut_beg=1
+cut_end=800
 step=1
+
+# Energy cutoff for charge density
+RHO=47
 
 # Parallel computing parameters
 N_NODES=1
@@ -22,10 +25,10 @@ USPP="true"
 TITLE="E_psi"
 PREFIX="Si"
 
-rm $TITLE"_RESULTS_psi_phys.txt"
-rm $TITLE"_RESULTS_psi_comp.txt"
-RESULTS_1=$TITLE"_RESULTS_psi_phys.txt"
-RESULTS_2=$TITLE"_RESULTS_psi_comp.txt"
+rm $TITLE"_RESULTS_rho_phys.txt"
+rm $TITLE"_RESULTS_rho_comp.txt"
+RESULTS_1=$TITLE"_RESULTS_rho_phys.txt"
+RESULTS_2=$TITLE"_RESULTS_rho_comp.txt"
 
 # Put pseudo directory and output directory
 cd `echo $0 | sed 's/\(.*\)\/.*/\1/'` # extract pathname
@@ -54,6 +57,14 @@ else
 	echo "We are not using USPP so we can set E_rho = 4*E_psi or more"
 fi
 
+### FIT THE INITIAL KINETIC ENERGY CUTOFF ENRGY TO THE E_psi
+if [ "$USPP" = "true" ]
+then
+	RHO=$RHO*12
+else
+	RHO=$RHO*4
+fi
+
 echo
 echo
 echo "!!!CALCULATIONS STARTS!!!"
@@ -65,15 +76,6 @@ do
 
 ### MAKE TEMPORARY FILE NAME
 TITLE_TMP=$TITLE"_"$cut_beg"-"$i"-"$cut_end"_"$FUNC
-
-### FIT THE INITIAL KINETIC ENERGY CUTOFF ENRGY TO THE E_psi
-
-if [ "$USPP" = "true" ]
-then
-	RHO=$[$i*12]
-else
-	RHO=$[$i*4]
-fi
 
 ### IMPORT QE INPUT FILE AND CHANGE ITS PARAMETERS
 cat > $TITLE_TMP".in" << EOF
