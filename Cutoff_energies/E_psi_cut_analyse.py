@@ -39,14 +39,14 @@ def main(n_digits, idx_filt, comp_name, KS, filt, save_fig):
     
     CE.plot_E(Tot_E_psi, Tot_E_dif, 
               data_comp, filt_info[2], filt_info[1], filt_info[0],
-              edge_idx, textstr, x_label, save_fig=False)
+              edge_idx, textstr, x_label, save_fig)
 
 # Initial data
 n_digits         = 10**-4  # n-digits threshold - could be the number like e.g. 0.0012
 idx_filt         = 3       # n'th index for which energy diff is lower than n_digits
 
-phys_name        = "E_psi_RESULTS_phys.txt"
-comp_name        = "E_psi_RESULTS_comp.txt"
+phys_name        = "Examples_out/E_psi_RESULTS_phys.txt"
+comp_name        = "Examples_out/E_psi_RESULTS_comp.txt"
 
 K                = 5       # Filtration kernel size
 filt_method      = "median"# Filtration method - median, mean
