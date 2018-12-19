@@ -12,3 +12,5 @@ You should have compiled QE on your machine and define the path to it and to pse
 <p align="center">
   <img src="https://github.com/Miloszek1990/Automted_QE/blob/master/Cutoff_energies/Examples_out/E_rho.png" width="350" title="hover text">
 </p>
+
+In both cases you gets the plot with total time of each SCF calculation, which helps to choose reasonable thresholds for further calculations. You can filter those signals by rolling mean or median filter with non-fixed window. Both, E_psi and E_rho shows quite linear behaviour in calculation time domain, but E_psi influence stronger on the calculations time than the changes in order of E_rho differences.
