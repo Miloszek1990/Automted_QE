@@ -40,7 +40,7 @@ def main(n_digits, idx_filt, comp_name, PSI_v, PSI_m, KS, filt, save_fig):
                               r"$\delta E^{tot}>$"+str(n_digits),
                               r"$E_\rho=$"+str(int(Tot_E_rho[edge_idx]))+"Ry",
                              ])
-    x_label      = r"Cutoff energy for wavefunction $E_\rho$ [Ry]"
+    x_label      = r"Cutoff energy for charge densityq $E_\rho$ [Ry]"
     
     CE.plot_E(Tot_E_rho, Tot_E_dif, "E_rho",
               data_comp, filt_info[2], filt_info[1], filt_info[0],
@@ -60,7 +60,7 @@ comp_name        = "Examples_out/E_rho_RESULTS_comp.txt"
 K                = 5       # Filtration kernel size
 filt_method      = "median"# Filtration method - median, mean
 
-save_fig         = False    # Figure saving option
+save_fig         = True    # Figure saving option
 
 if __name__=="__main__":
     main(n_digits, idx_filt, 
